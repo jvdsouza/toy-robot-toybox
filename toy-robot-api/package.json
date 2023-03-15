@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "build-ts": "tsc"
+    "build-ts": "tsc",
+    "start": "node build/app.js",
+    "develop": "nodemon app.tsx",
+    "build": "esbuild app.ts --bundle --platform=node --target=node18.15 --outfile=build/app.js"
   },
   "dependencies": {
     "debug": "~2.6.9",
+    "esbuild": "0.17.11",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1"
