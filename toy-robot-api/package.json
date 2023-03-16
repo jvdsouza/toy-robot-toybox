@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "esbuild app.ts --bundle --platform=node --target=node18.15 --outfile=build/app.js",
     "build-ts": "tsc",
     "start": "node build/app.js",
-    "develop": "nodemon app.tsx",
-    "build": "esbuild app.ts --bundle --platform=node --target=node18.15 --outfile=build/app.js"
+    "develop": "nodemon app.ts"
   },
   "dependencies": {
     "debug": "~2.6.9",

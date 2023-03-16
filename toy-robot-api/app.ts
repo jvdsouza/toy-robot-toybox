@@ -5,6 +5,7 @@ const logger = require('morgan');
 let port = 3000;
 
 const indexRouter = require('./routes/index');
+const toyRobotRouter = require('./routes/toyRobot/index');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
+app.use('/toy-robot', toyRobotRouter);
 
 // catch 404 and forward to error handler
 app.use(function(_req, _res, next) {
