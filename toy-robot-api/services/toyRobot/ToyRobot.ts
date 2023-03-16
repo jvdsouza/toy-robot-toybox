@@ -10,6 +10,7 @@ class ToyRobot implements IToyRobot {
     }
 
     const place = (coords: [number, number], direction: Direction): IToyRobot {
+
         return this
     }
 }
