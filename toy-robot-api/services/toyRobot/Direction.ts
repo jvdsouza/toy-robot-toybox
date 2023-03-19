@@ -15,12 +15,12 @@ const getNewDirection = (direction: Direction, turn: Turn): Direction => {
     const DirectionIndex = DirectionEnumKeys.indexOf(direction)
     if (turn == Turn.LEFT) {
         return Direction[DirectionEnumKeys[(DirectionIndex + 3) % 4]]
-    } else if (turn == Turn.RIGHT) {
-        return Direction[DirectionEnumKeys[(DirectionIndex + 1) % 4]]
     }
+    return Direction[DirectionEnumKeys[(DirectionIndex + 1) % 4]]
 }
 
 export {
     Direction,
-    Turn
+    Turn,
+    getNewDirection,
 };

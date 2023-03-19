@@ -3,11 +3,12 @@ import {Direction, Turn} from "./Direction";
 
 interface IToyRobot {
     board: IBoard
-    direction: Direction,
-    start: [Number, Number],
-    place: (coords: [number, number], direction: Direction) => IToyRobot,
+    face: Direction,
+    location: [number, number],
+    place: (coords: [number, number], face: Direction) => IToyRobot,
     move: () => IToyRobot,
     turn: (turn: Turn) => IToyRobot,
+    report: () => [number, number, Direction],
 }
 
 export default IToyRobot;
