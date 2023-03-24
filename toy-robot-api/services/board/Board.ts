@@ -1,18 +1,18 @@
 import { IBoard, Obstacles } from "./IBoard";
 
-class Board implements IBoard{
-    length: number;
-    width: number;
-    obstacles: Obstacles;
+class Board implements IBoard {
+    private length: number;
+    private width: number;
+    private obstacles: Obstacles;
 
     constructor(
         length: number, 
         width: number, 
-        obstacles: {identifier: string, position: [number, number]} | {},
+        obstacles: [number, number][],
     ) {
         this.length = this.setLength(length).getLength();
         this.width = this.setWidth(width).getWidth();
-        this.obstacles = this.setObstacles(obstacles);
+        this.obstacles = obstacles.length > 0 ? this.setObstacles(obstacles) : {};
     }
 
     getLength = (): number => {
@@ -25,14 +25,18 @@ class Board implements IBoard{
 
     setLength = (length: number): IBoard => {
         if ((length) < 0) {
-            this.length = 5;
+            this.length = 1;
+        } else {
+            this.length = length;
         }
         return this;
     }
 
     setWidth = (width: number): IBoard => {
         if ((width) < 0) {
-            this.width = 5;
+            this.width = 1;
+        } else {
+            this.width = width;
         }
         return this;
     }
@@ -41,14 +45,17 @@ class Board implements IBoard{
         return this.obstacles
     }
 
-    setObstacles = (obstacles: Obstacles): IBoard => {
-        this.obstacles = obstacles
-        return this
+    setObstacles = (newObstacles: [number, number][]): IBoard => {
+        this.obstacles = {};
+        newObstacles.forEach((position) => {
+            this.addObstacle(position);
+        });
+
+        return this;
     }
 
     addObstacle = (position: [number, number]): IBoard => {
-        const positionKey = this.generateObstacleKey(position);
-        this.setObstacles(Object.assign(this.obstacles, {[positionKey]: position}));
+        this.obstacles = {...this.obstacles, [this.generateObstacleKey(position)]: position};
         return this;
     }
  
@@ -56,7 +63,7 @@ class Board implements IBoard{
         return this.generateObstacleKey(position) in this.obstacles;
     }
 
-    generateObstacleKey = (position: [number, number]): string => {
+    private generateObstacleKey = (position: [number, number]): string => {
         return `${position[0]},${position[1]}`
     }
 }

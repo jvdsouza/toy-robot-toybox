@@ -1,16 +1,12 @@
 interface IBoard {
-    length: number, // horizontal measurement
-    width: number, // vertical measurement
-    obstacles: Obstacles,
-    getLength: () => number,
-    getWidth: () => number,
+    getLength: () => number, // horizontal dimension
+    getWidth: () => number, // vertical dimension
     setLength: (length: number) => IBoard,
     setWidth: (width: number) => IBoard,
     getObstacles: () => Obstacles,
-    setObstacles: (obstacles: Obstacles) => IBoard,
+    setObstacles: (obstacles: [number, number][]) => IBoard,
     addObstacle: (position: [number, number]) => IBoard,
     doesObstacleExist: (position: [number, number]) => boolean,
-    generateObstacleKey: (position: [number, number]) => string
 };
 
 type Obstacles = {
