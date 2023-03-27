@@ -10,9 +10,12 @@ class Board implements IBoard {
         width: number, 
         obstacles: [number, number][],
     ) {
-        this.length = this.setLength(length).getLength();
-        this.width = this.setWidth(width).getWidth();
-        this.obstacles = obstacles.length > 0 ? this.setObstacles(obstacles) : {};
+        this.length = length;
+        this.setLength(this.length);
+        this.width = width;
+        this.setWidth(this.width);
+        this.obstacles = {};
+        if(obstacles.length > 0) this.setObstacles(obstacles);
     }
 
     getLength = (): number => {
@@ -24,7 +27,7 @@ class Board implements IBoard {
     }
 
     setLength = (length: number): IBoard => {
-        if ((length) < 0) {
+        if (length <= 0) {
             this.length = 1;
         } else {
             this.length = length;
@@ -33,7 +36,7 @@ class Board implements IBoard {
     }
 
     setWidth = (width: number): IBoard => {
-        if ((width) < 0) {
+        if (width <= 0) {
             this.width = 1;
         } else {
             this.width = width;
