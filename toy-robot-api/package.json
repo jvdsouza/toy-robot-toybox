@@ -9,6 +9,9 @@
     "develop": "nodemon app.ts",
     "test": "jest --config=jest.config.js"
   },
+  "engines": {
+    "node" : "18.15.0"
+  },
   "dependencies": {
     "debug": "~2.6.9",
     "esbuild": "0.17.11",
