@@ -26,6 +26,11 @@ class ToyRobot implements IToyRobot {
         }
         return this
     }
+    
+    turn = (turn: Turn): IToyRobot => {
+        this.face = getNewDirection(this.face, turn)
+        return this;
+    }
 
     move = (): IToyRobot => {
         let newX = this.location[0];
@@ -45,11 +50,6 @@ class ToyRobot implements IToyRobot {
             this.place([newX, newY], this.face);
         }
 
-        return this;
-    }
-
-    turn = (turn: Turn): IToyRobot => {
-        this.face = getNewDirection(this.face, turn)
         return this;
     }
 
