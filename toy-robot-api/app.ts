@@ -6,6 +6,7 @@ let port = 3000;
 
 const indexRouter = require('./routes/index');
 const toyRobotRouter = require('./routes/toyRobot/index');
+const boardRouter = require('./routes/board/index');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
 app.use('/toy-robot', toyRobotRouter);
+app.use('/board', boardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(_req, _res, next) {
